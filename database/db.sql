@@ -21,7 +21,35 @@ ALTER TABLE users
 DESCRIBE users;
 
 INSERT INTO users (id, username, password, fullname) 
-  VALUES (1, 'carlos.garcia', 'carlos', 'Carlos Ivan Garcia Chacon');
+  VALUES (1, 'carlos.garcia', '$2a$10$QvWtmiZthg5BASS31hdzZO3eI52o5vBNV0yILnzB5eGZ/.6V8/alW', 'Carlos Ivan Garcia Chacon');
 
 SELECT * FROM users;
-*/
+
+
+-- LINKS TABLE
+CREATE TABLE links (
+  id INT(11) NOT NULL,
+  title VARCHAR(150) NOT NULL,
+  url VARCHAR(255) NOT NULL,
+  description TEXT,
+  user_id INT(11),
+  created_at timestamp NOT NULL DEFAULT current_timestamp,
+  CONSTRAINT fk_user FOREIGN KEY(user_id) REFERENCES users(id)
+);
+
+ALTER TABLE links
+  ADD PRIMARY KEY (id);
+
+ALTER TABLE links
+  MODIFY id INT(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT = 1;
+
+DESCRIBE links;
+
+CREATE TABLE sessions (
+  session_id VARCHAR(128) ,
+  expires INT NOT NULL,
+  data MEDIUMTEXT NOT NULL
+);
+
+ALTER TABLE sessions
+  ADD PRIMARY KEY (session_id);

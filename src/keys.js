@@ -3,6 +3,23 @@ module.exports = {
 
     database: {
         connectionLimit: 10,
+        host: '67.205.161.20', 
+        user: 'administrador',
+        password: '1152435718',
+        database: 'cobros',
+        port: 3306
+    }
+
+};
+
+
+/*
+conexion BD FREE
+
+module.exports = {
+
+    database: {
+        connectionLimit: 10,
         host: 'db4free.net', 
         user: 'admin1152435718',
         password: '1152435718',
@@ -12,8 +29,9 @@ module.exports = {
 
 };
 
-
 /*
+/*
+CONEXION BD MAMP
 module.exports = {
 
     database: {
