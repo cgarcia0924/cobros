@@ -25,6 +25,8 @@ INSERT INTO users (id, username, password, fullname)
 
 SELECT * FROM users;
 
+ALTER TABLE users
+  ADD PRIMARY KEY (id);
 
 -- LINKS TABLE
 CREATE TABLE links (
@@ -53,3 +55,22 @@ CREATE TABLE sessions (
 
 ALTER TABLE sessions
   ADD PRIMARY KEY (session_id);
+
+CREATE TABLE tipo_users (
+  id INT(11)  NOT NULL,
+  tipo VARCHAR(60) NOT NULL
+);
+
+ALTER TABLE users 
+  ADD tipo_users_id INT(11);
+
+ALTER TABLE tipo_users
+  MODIFY id INT(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT = 1;
+
+ALTER TABLE tipo_users
+    CONSTRAINT fk_users FOREIGN KEY(users_id) REFERENCES tipo_users(id);
+
+ALTER TABLE tipo_users
+  ADD PRIMARY KEY (id);
+
+

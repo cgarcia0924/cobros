@@ -18,7 +18,7 @@ passport.use('local.signin', new LocalStrategy({
     // genera un falso o verdadero
     //(matchPassword) me compara las contraseñas
     if (validPassword) {
-      done(null, user, req.flash('success', 'Bienvenido! ' + user.username));
+      done(null, user, req.flash('success', 'Bienvenido! ' + user.username + ' Tipo Usuario: ' + user.tipo_users_id));
     } else {
       done(null, false, req.flash('message', 'Clave Incorrecta'));
     }

@@ -5,10 +5,10 @@ const router = express.Router();
 
 const passport = require('passport');
 // Con isLoggedIn PROTEJO LAS RUTAS
-const { isLoggedIn } = require('../lib/auth');
+const { isLoggedIn, isNotLoggedIn } = require('../lib/auth');
 
 // SIGNUP
-router.get('/signup',isLoggedIn,  (req, res) => {
+router.get('/signup', isLoggedIn,   (req, res) => {
   res.render('auth/signup');
 });
 
@@ -19,7 +19,7 @@ router.post('/signup', passport.authenticate('local.signup', {
 }));  
 
 // SINGIN
-router.get('/signin',  (req, res) => {
+router.get('/signin', isNotLoggedIn , (req, res) => {
   // con "layout: false" omito la plantilla por defecto
   res.render('auth/signin', { layout: false });
 });

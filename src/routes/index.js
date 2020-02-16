@@ -7,4 +7,5 @@ router.get('/', isLoggedIn, async(req, res) => {
     res.render('index');
 });
 
+
 module.exports = router;
