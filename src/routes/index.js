@@ -6,7 +6,7 @@ const pool = require('../database');
 const { isLoggedIn } = require('../lib/auth');
 
 router.get('/', isLoggedIn, async(req, res) => {
-    res.render('index');
+    res.render('home/dashboard');
 });
 
 
