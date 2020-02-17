@@ -4,7 +4,7 @@ const router = express.Router();
 const { isLoggedIn } = require('../lib/auth');
 
 router.get('/', isLoggedIn, async(req, res) => {
-    res.render('index');
+    res.render('index.hbs');
 });
 
 

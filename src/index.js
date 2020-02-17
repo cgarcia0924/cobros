@@ -66,10 +66,9 @@ app.use((req, res, next) => {
 
 //Routes: aqui importo las rutas
 app.use(require('./routes'));
-//app.use(require('./routes/singin'));
-app.use('/links', require('./routes/links'));
 app.use(require('./routes/login'));
-app.use('/clientes', require('./routes/clientes'));
+app.use(require('./routes/clientes'));
+//app.use('/clientes', require('./routes/clientes'));
 
 //Public
 app.use(express.static(path.join(__dirname, 'public')));
