@@ -37,8 +37,8 @@ router.post('/add', async (req, res) => {
     const newLink = {
         title,
         url,
-        description
-        //user_id: req.user.id
+        description,
+        user_id: req.user.id // con esto agrego a la tabla el id del usuario.
     };
     await pool.query('INSERT INTO links set ?', [newLink]);
     req.flash('success', 'Link Saved Successfully');

@@ -42,7 +42,7 @@ router.post('/signin', (req, res, next) => {
   })(req, res, next);
 });
 
-router.get('/logout', (req, res) => {
+router.get('/logout', isLoggedIn, (req, res) => {
   req.logOut(); // este método es entregado por passport 
   res.redirect('/signin');
 });
