@@ -4,9 +4,9 @@ const router = express.Router();
 const pool = require('../database');
 
 const { isLoggedIn } = require('../lib/auth');
-router.get('/clientes', isLoggedIn, async(req, res) => {
+router.get('/costumers', isLoggedIn, async(req, res) => {
     //res.send('Formulario');
-    res.render('clientes/consultas');
+    res.render('costumers/list');
 });
 
 

@@ -58,17 +58,18 @@ app.use(passport.session());
 //Global Variables
 
 app.use((req, res, next) => {
-      app.locals.message = req.flash('message');
-      app.locals.success = req.flash('success');
-      app.locals.user = req.user;
+    app.locals.message = req.flash('message');
+    app.locals.success = req.flash('success');
+    app.locals.user = req.user;
     next();
 });
 
 //Routes: aqui importo las rutas
 app.use(require('./routes'));
 app.use(require('./routes/login'));
-app.use(require('./routes/clientes'));
-app.use(require('./routes/usuarios'));
+app.use(require('./routes/costumers'));
+app.use(require('./routes/users'));
+app.use(require('./routes/office'));
 app.use(require('./routes/home'));
 //app.use('/clientes', require('./routes/clientes'));
 

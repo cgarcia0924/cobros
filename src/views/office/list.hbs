@@ -8,10 +8,10 @@
                    
                   <thead>
                     <tr>
-                      <th>id</th>
-                      <th>Nombres y Apellidos</th>
-                      <th>usuario</th>
-                      <th>Tipo Usuario</th>
+                      <th>Nombre</th>
+                      <th>Dirección</th>
+                      <th>Ciudad</th>
+                      <th>Responsable</th>
                       <th>Estado</th>
                       <th>Acciones</th>
                     </tr>
@@ -26,13 +26,13 @@
                     </tr>
                   </tfoot-->
                   <tbody>
-                  {{#each usuarios}}
+                  {{#each office}}
                     <tr>
-                      <td>{{id}}</td>
-                      <td>{{fullname}}</td>
-                      <td>{{username}}</td>
-                      <td>{{tipo_users_id}}</td>
-                      <td>{{estado}}</td>
+                      <td>{{name}}</td>
+                      <td>{{address}}</td>
+                      <td>{{city}}</td>
+                      <td>{{responsable}}</td>
+                      <td>{{active}}</td>
                       <td>
                     
                             <a href="#" class="btn btn-warning btn-icon-split btn-sm">
