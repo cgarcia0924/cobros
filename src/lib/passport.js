@@ -11,14 +11,15 @@ passport.use('local.signin', new LocalStrategy({
     passReqToCallback: true
 
 }, async(req, username, password, done) => {
-    const rows = await pool.query('SELECT * FROM users INNER JOIN customers ON customers.id=users.customers_id INNER JOIN tipo_users ON tipo_users.id=users.tipou_id WHERE (customers.active=1) and (users.username=?)', [username]);
+    const rows = await pool.query('SELECT u.id AS id, u.username AS username, u.password AS password,u.name AS name, u.lastname AS lastname, t.name AS tipo_user,c.active AS estado FROM users AS u INNER JOIN customers AS c ON c.id = u.customers_id INNER JOIN tipo_users AS t ON t.id = u.tipou_id WHERE  c.active = 1 AND u.username = ?', [username]);
     if (rows.length > 0) {
         const user = rows[0]; // guardo el usuario que he encontrado
+        console.log(user)
         const validPassword = await helpers.matchPassword(password, user.password)
             // genera un falso o verdadero
             //(matchPassword) me compara las contraseñas
         if (validPassword) {
-            done(null, user, req.flash('success', 'Bienvenido! ' + user.username + ' ' + user.users + ' ' + user.lastname + ' Tipo Usuario: ' + user.tipo_users));
+            done(null, user, req.flash('success', 'Bienvenido! ' + user.username + ' Nombre y Apellido ' + user.name + ' ' + user.lastname + ' rol: ' + user.tipo_user));
         } else {
             done(null, false, req.flash('message', 'Clave Incorrecta'));
         }
