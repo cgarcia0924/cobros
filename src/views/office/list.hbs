@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="card shadow mb-4">
   <div class="card-header py-3">
     <h6 class="m-0 font-weight-bold text-primary">Usuarios Registrados</h6>
@@ -53,6 +54,75 @@
         </tfoot>
       </table>
 
+=======
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+  <!-- Page Heading -->
+  <h1 class="h3 mb-2 text-gray-800">Administrar Oficina!</h1>
+  <a href="/office/add" class="btn btn-primary btn-user btn-block">
+    Crear Oficina
+  </a>
+  <p class="mb-4"></p>
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">Oficinas Registrados</h6>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Dirección</th>
+              <th>Ciudad</th>
+              <th>Responsable</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <!--tfoot>
+                    <tr>
+                      <th>id</th>
+                      <th>Nombres y Apellidos</th>
+                      <th>usuario</th>
+                      <th>Tipo Usuario</th>
+                      <th>Acciones</th>
+                    </tr>
+                  </tfoot-->
+          <tbody>
+            {{#each office}}
+            <tr>
+              <td>{{name}}</td>
+              <td>{{address}}</td>
+              <td>{{city}}</td>
+              <td>{{responsable}}</td>
+              <td>{{active}}</td>
+              <td>
+
+                <a href="/office/edit" class="btn btn-warning btn-icon-split btn-sm">
+                  <span class="icon text-white-50">
+                    <i class="fas fa-check"></i>
+                  </span>
+                  <span class="text"></span>
+                </a>
+                <a href="#" class="btn btn-danger btn-icon-split btn-sm">
+                  <span class="icon text-white-50">
+                    <i class="fas fa-trash"></i>
+                  </span>
+                  <span class="text"></span>
+                </a>
+
+              </td>
+            </tr>
+            {{/each}}
+          </tbody>
+
+        </table>
+
+      </div>
+>>>>>>> 45da3abe957c2d36513e1ac47a3a40e2f4b90eda
     </div>
   </div>
 </div>
