@@ -70,6 +70,7 @@ app.use(require('./routes/login'));
 app.use(require('./routes/costumers'));
 app.use(require('./routes/users'));
 app.use(require('./routes/office'));
+app.use(require('./routes/employees'));
 app.use(require('./routes/home'));
 //app.use('/clientes', require('./routes/clientes'));
 
