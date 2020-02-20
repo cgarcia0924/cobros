@@ -9,7 +9,6 @@ passport.use('local.signin', new LocalStrategy({
     usernameField: 'username',
     passwordField: 'password',
     passReqToCallback: true
-
 }, async(req, username, password, done) => {
     const rows = await pool.query('SELECT u.id AS id, u.username AS username, u.password AS password,u.name AS name, u.lastname AS lastname, t.name AS tipo_user,c.active AS estado FROM users AS u INNER JOIN customers AS c ON c.id = u.customers_id INNER JOIN tipo_users AS t ON t.id = u.tipou_id WHERE  c.active = 1 AND u.username = ?', [username]);
     if (rows.length > 0) {
@@ -34,13 +33,20 @@ passport.use('local.signup', new LocalStrategy({
     passwordField: 'password',
     passReqToCallback: true
 }, async(req, username, password, done) => {
-    const { name } = req.body;
+    const { name, lastname, telephone, cellphone, address, number_id, } = req.body; // solo se agregan los campos que vienen del formulario
     let newUser = {
-        lastname,
         username,
-        //tipo_users,
+        password,
         name,
-        password
+        lastname,
+        telephone,
+        cellphone,
+        address,
+        password,
+        number_id,
+        customers_id: req.user.customers_id,
+        tipou_id: 1,
+        tipo_id: 1
     };
     newUser.password = await helpers.encryptPassword(password);
     // Saving in the Database

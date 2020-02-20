@@ -60,7 +60,7 @@ router.get('/edit/:id', async(req, res) => {
 
 router.post('/edit/:id', async(req, res) => {
     const { id } = req.params;
-    const { number_id, username, name, lastname, telephone, cellphone, address, password, tipo_id = '1', tipou_id = '3' } = req.body;
+    const { number_id, username, name, lastname, telephone, cellphone, address, tipo_id = '1', tipou_id = '3' } = req.body;
     const newuser = {
         number_id,
         name,
@@ -69,11 +69,10 @@ router.post('/edit/:id', async(req, res) => {
         telephone,
         cellphone,
         address,
-        password,
         tipo_id,
-        customers_id: req.user.customers_id,
         tipou_id
     };
+    console.log(newuser);
     await pool.query('UPDATE users SET ? WHERE id = ?', [newuser, id]);
     req.flash('success', 'Usuario Actualizado Correctamente');
     res.redirect('/employees');

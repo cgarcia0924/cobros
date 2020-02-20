@@ -1,4 +1,5 @@
-<div class="container"> 
+<div class="container">
+ {{>message}} 
     <div class="card o-hidden border-0 shadow-lg my-5">
         <div class="card-body p-0">
             <!-- Nested Row within Card Body -->
@@ -9,41 +10,41 @@
                             <h1 class="h4 text-gray-900 mb-4">Editar Empleado!</h1>
                         </div>
                         <form class="user" action="/employees/edit/{{user.id}}" method="POST">
-                          
+
                             <div class="form-group row">
                                 <div class="form-group col-sm-6 mb-3 mb-sm-0">
-                                    <input type="text" class="form-control form-control-user" value="{{user.number_id}}" autofocus name="number_id"
-                                        placeholder="Cédula">
+                                    <input type="text" class="form-control form-control-user" value="{{user.number_id}}"
+                                        autofocus name="number_id" placeholder="Cédula" class="form-control" required>
                                 </div>
                                 <div class="form-group col-sm-6 mb-3 mb-sm-0">
-                                    <input type="text" class="form-control form-control-user" value="{{user.name}}" name="name"
-                                        placeholder="Nombres">
+                                    <input type="text" class="form-control form-control-user" value="{{user.username}}"
+                                        name="username" placeholder="Usuario" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="form-group col-sm-6 mb-3 mb-sm-0">
+                                    <input type="text" class="form-control form-control-user" value="{{user.name}}"
+                                        name="name" placeholder="Nombres" class="form-control" required>
+                                </div>
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <input type="text" class="form-control form-control-user" value="{{user.lastname}}"
+                                        name="lastname" placeholder="Apellidos" class="form-control" required>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <input type="text" class="form-control form-control-user" value="{{user.lastname}}" name="lastname"
-                                        placeholder="Apellidos">
+                                    <input type="text" class="form-control form-control-user" value="{{user.cellphone}}"
+                                        name="cellphone" placeholder="Celular" class="form-control" required>
                                 </div>
                                 <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <input type="text" class="form-control form-control-user" value="{{user.telephone}}" name="telephone"
-                                        placeholder="Teléfono">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <input type="text" class="form-control form-control-user" value="{{user.cellphone}}"  name="cellphone"
-                                        placeholder="Celular">
-                                </div>
-                                <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <input type="text" class="form-control form-control-user" value="{{user.address}}"  name="address"
-                                        placeholder="Dirección">
+                                    <input type="text" class="form-control form-control-user" value="{{user.telephone}}"
+                                        name="telephone" placeholder="Teléfono" class="form-control" required>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <input type="password" class="form-control form-control-user" value="{{user.password}}" name="password"
-                                        placeholder="Contraseña">
+                                    <input type="text" class="form-control form-control-user" value="{{user.address}}"
+                                        name="address" placeholder="Dirección" class="form-control" required>
                                 </div>
                             </div>
                             <hr>
@@ -52,7 +53,7 @@
                                     <button class="btn btn-primary btn-user btn-block">
                                         Guardar
                                     </button>
-                                </div>    
+                                </div>
                                 <div class="col-lg-6">
                                     <a href="/employees" class="btn btn-danger btn-user btn-block">
                                         Cancelar
