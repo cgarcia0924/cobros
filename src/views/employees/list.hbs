@@ -3,8 +3,8 @@
 
   <!-- Page Heading -->
   <h1 class="h3 mb-2 text-gray-800">Administrar Empleados!</h1>
-  <a href="/office/add" class="btn btn-primary btn-user btn-block">
-    Crear Empleado
+  <a href="/employees/add">
+    ->Crear Empleado
   </a>
   <p class="mb-4"></p>
   <div class="card shadow mb-4">
@@ -13,48 +13,44 @@
     </div>
     <div class="card-body">
       <div class="table-responsive">
-        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-
+        <table id="example" class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
           <thead>
             <tr>
-              <th>Nombre</th>
+              <th>Id</th>
+              <th>Identificación</th>
+              <th>Usuario</th>
+              <th>Nombres y Apellidos</th>
               <th>Dirección</th>
-              <th>Ciudad</th>
-              <th>Responsable</th>
-              <th>Estado</th>
+              <th>Teléfono</th>
+              <th>Celular</th>
               <th>Acciones</th>
             </tr>
           </thead>
-          <!--tfoot>
-                    <tr>
-                      <th>id</th>
-                      <th>Nombres y Apellidos</th>
-                      <th>usuario</th>
-                      <th>Tipo Usuario</th>
-                      <th>Acciones</th>
-                    </tr>
-                  </tfoot-->
+          <tfoot>
+            <th>Id</th>
+            <th>Identificación</th>
+            <th>Usuario</th>
+            <th>Nombres y Apellidos</th>
+            <th>Dirección</th>
+            <th>Teléfono</th>
+            <th>Celular</th>
+            <th>Acciones</th>
+            </tr>
+          </tfoot>
           <tbody>
-            {{#each employees}}
+            {{#each users}}
             <tr>
-              <td>{{name}}</td>
+              <td>{{id}}</td>
+              <td>{{number_id}}</td>
+              <td>{{username}}</td>
+              <td>{{name}} {{lastname}}</td>
               <td>{{address}}</td>
-              <td>{{city}}</td>
-              <td>{{responsable}}</td>
-              <td>{{active}}</td>
+              <td>{{telephone}}</td>
+              <td>{{cellphone}}</td>
               <td>
-
-                <a href="/employees/edit" class="btn btn-warning btn-icon-split btn-sm">
-                  <span class="icon text-white-50">
-                    <i class="fas fa-check"></i>
-                  </span>
-                  <span class="text"></span>
-                </a>
-                <a href="#" class="btn btn-danger btn-icon-split btn-sm">
-                  <span class="icon text-white-50">
-                    <i class="fas fa-trash"></i>
-                  </span>
-                  <span class="text"></span>
+                <a class="btn btn-warning btn-icon-split btn-sm" href="/employees/edit/{{users.id}}">
+                  <span class="icon text-white-50"><i class="fas fa-flag"></i></span>
+                  <span class="text">Editar</span>
                 </a>
 
               </td>

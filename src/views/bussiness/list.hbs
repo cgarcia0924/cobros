@@ -1,0 +1,61 @@
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <h6 class="m-0 font-weight-bold text-primary">Adiministrar Negocios</h6>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table id="example" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Nombre Negocio</th>
+            <th>Oficina</th>
+            <th>Fecha Ingreso</th>
+            <th>Ciudad</th>
+            <th>active</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each bussiness}}
+          <tr>
+            <td>{{id}}</td>
+            <td>{{names}}</td>
+            <td>{{office}}</td>
+            <td>{{date_admission}}</td>
+            <td>{{usuario}}</td>
+            <td>{{active}}</td>
+            <td>
+              <a href="#" class="btn btn-warning .btn-circle btn-sm">
+                <span class="icon text-white-50">
+                  <i class="fas fa-check"></i>
+                </span>
+                <span class="text"></span>
+              </a>
+              <a href="#" class="btn btn-danger .btn-circle btn-sm">
+                <span class="icon text-white-50">
+                  <i class="fas fa-trash"></i>
+                </span>
+                <span class="text"></span>
+              </a>
+            </td>
+          </tr>
+          {{/each}}
+
+        </tbody>
+        <tfoot>
+          <tr>
+            <th>Id</th>
+            <th>Nombre Negocio</th>
+            <th>Oficina</th>
+            <th>Fecha Ingreso</th>
+            <th>Ciudad</th>
+            <th>active</th>
+            <th>Acciones</th>
+          </tr>
+        </tfoot>
+      </table>
+
+    </div>
+  </div>
+</div>
