@@ -5,14 +5,14 @@ const passport = require('passport');
 const pool = require('../database');
 const helpers = require('../lib/helpers');
 
-const { isLoggedIn, isNotLoggedIn } = require('../lib/auth');
+const { isLoggedIn } = require('../lib/auth');
 
-router.get('/employees', isLoggedIn, async(req, res) => {
+router.get('/', isLoggedIn, async(req, res) => {
     const users = await pool.query('SELECT * FROM users WHERE tipou_id = 3');
     res.render('employees/list', { users });
 });
 
-router.get('/employees/add', isLoggedIn, async(req, res) => {
+router.get('/add', isLoggedIn, async(req, res) => {
     res.render('employees/add');
 });
 
@@ -42,20 +42,23 @@ router.post('/employees/add', async(req, res, done) => {
         const result = await pool.query('INSERT INTO users SET ? ', newEmployes);
         newEmployes.id = result.insertId;
         req.flash('success', 'Empleado creado exitosamente');
-        res.redirect('/employees/');
+        res.redirect('/employees');
     }
 });
 
-
-
-router.get('/employees/edit/:id', async(req, res) => {
+router.get('/delete/:id', async(req, res) => {
     const { id } = req.params;
-    const users = await pool.query('SELECT * FROM users WHERE id = ?', [id]);
-    console.log(users);
-    res.render('/employees/edit/', { link: users[0] });
+    await pool.query('DELETE FROM users WHERE ID = ?', [id]);
+    req.flash('success', 'Empleado eliminado correctamente');
+    res.redirect('/employees');
+});
+router.get('/edit/:id', async(req, res) => {
+    const { id } = req.params;
+    const users = await pool.query('SELECT * FROM users WHERE ID = ?', [id]);
+    res.render('employees/edit', { user: users[0] });
 });
 
-router.post('/employees/edit/:id', async(req, res) => {
+router.post('/edit/:id', async(req, res) => {
     const { id } = req.params;
     const { number_id, username, name, lastname, telephone, cellphone, address, password, tipo_id = '1', tipou_id = '3' } = req.body;
     const newuser = {
@@ -75,9 +78,14 @@ router.post('/employees/edit/:id', async(req, res) => {
     req.flash('success', 'Usuario Actualizado Correctamente');
     res.redirect('/employees');
 });
-
-
-
+/*
+router.get('/delete/:id', async(req, res) => {
+    const { id } = req.params;
+    await pool.query('DELETE FROM users WHERE ID = ?', [id]);
+    req.flash('success', 'Link Removed Successfully');
+    res.redirect('employees');
+});
+*/
 passport.serializeUser((user, done) => {
     done(null, user.id);
 });
