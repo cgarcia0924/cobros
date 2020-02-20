@@ -15,13 +15,12 @@ router.get('/bussiness', isLoggedIn, async(req, res) => {
 
 router.get('/bussiness/add', isLoggedIn, async(req, res) => {
     const users = await pool.query('SELECT * FROM users');
-    //const office = await pool.query('SELECT * FROM office');
     console.log(users)
     res.render('bussiness/add', { users });
     //res.render('bussiness/add');
 });
 
-router.post('/add', async(req, res) => {
+router.post('/bussiness/add', async(req, res) => {
     const { number_id, username = number_id, name, lastname, telephone, cellphone, address, password, tipo_id = '1', customers_id = '2', tipou_id = '3' } = req.body;
     const newEmployes = {
         number_id,
@@ -35,7 +34,6 @@ router.post('/add', async(req, res) => {
         tipo_id,
         customers_id: req.user.ustomers_id,
         tipou_id
-
         //user_id: req.user.id
     };
     console.log(newEmployes);

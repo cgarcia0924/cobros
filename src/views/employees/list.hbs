@@ -6,7 +6,7 @@
   <a href="employees/add">
     ->Crear Empleado
   </a>
-  <p class="mb-4"></p>  <!-- Margen Inicial  -->
+  <p class="mb-4"></p> <!-- Margen Inicial  -->
   <div class="card shadow mb-4">
     <div class="card-header py-3">
       <h6 class="m-0 font-weight-bold text-primary">Empleados Registrados</h6>
@@ -48,15 +48,15 @@
               <td>{{telephone}}</td>
               <td>{{cellphone}}</td>
               <td>
-                <a class="btn btn-warning btn-icon-split btn-sm" href="/employees/edit/{{id}}">
-                  <span class="icon text-white-50"><i class="fas fa-flag"></i></span>
-                  <span class="text">Editar</span>
+                <a class="btn btn-warning btn-sm" href="/employees/edit/{{id}}">
+                  <span class="icon text-white-50" ><i class="fas fa-check"></i></span>
+                  <span class="text" class="d-inline-block" tabindex="0" data-placement="top" title="Editar">Editar  </span>
                 </a>
-                <a class="btn btn-danger btn-icon-split btn-sm" href="/employees/delete/{{id}}">
-                  <span class="icon text-white-50"><i class="fas fa-flag"></i></span>
-                  <span class="text">Eliminar</span>
+                <a class="btn btn-danger btn-sm" href="/employees/delete/{{id}}">
+                  <span class="icon text-white-50 d-inline-block" tabindex="0" data-placement="top" title="Eliminar"><i
+                      class="fas fa-trash" data-toggle="tooltip"> </i> </span>
+                  <span class="text"> Eliminar</span>
                 </a>
-
               </td>
             </tr>
             {{/each}}
