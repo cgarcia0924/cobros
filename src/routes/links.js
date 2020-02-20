@@ -27,10 +27,12 @@ router.get('/', isLoggedIn, async(req, res) => {
 });
 
 router.get('/delete/:id', async(req, res) => {
-    const { id } = req.params;
-    await pool.query('DELETE FROM links WHERE ID = ?', [id]);
-    req.flash('success', 'Link Removed Successfully');
-    res.redirect('/links');
+    //const { id } = req.params;
+    console.log(req.params.id);
+    res.send('Deleted');
+    //await pool.query('DELETE FROM office WHERE ID = ?', [id]);
+    //req.flash('success', 'Link Removed Successfully');
+    //res.redirect('/links/office');
 });
 
 router.get('/edit/:id', async(req, res) => {
