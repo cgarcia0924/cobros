@@ -1,5 +1,4 @@
-<div class="container">
-
+<div class="container"> 
     <div class="card o-hidden border-0 shadow-lg my-5">
         <div class="card-body p-0">
             <!-- Nested Row within Card Body -->
@@ -9,62 +8,57 @@
                         <div class="text-center">
                             <h1 class="h4 text-gray-900 mb-4">Crear Empleado!</h1>
                         </div>
-                        <form class="user">
+                        <form class="user" action="/employees/add" method="POST">
                             <div class="form-group row">
-                                <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <input type="text" class="form-control form-control-user" id="document"
+                                <div class="form-group col-sm-6 mb-3 mb-sm-0">
+                                    <input type="text" class="form-control form-control-user" name="number_id"
                                         placeholder="Cédula">
                                 </div>
-                                <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <input type="text" class="form-control form-control-user" id="nombre"
-                                        placeholder="Nombres y Apellidos">
-                                </div>                                
-                                <div class="col-sm-6">
-                                    <input type="text" class="form-control form-control-user" id="phone"
-                                        placeholder="Teléfono">
+                                <div class="form-group col-sm-6 mb-3 mb-sm-0">
+                                    <input type="text" class="form-control form-control-user" name="name"
+                                        placeholder="Nombres">
                                 </div>
-                                <div class="col-sm-6">
-                                    <input type="text" class="form-control form-control-user" id="cellphone"
-                                        placeholder="Célular">
-                                </div>
-                                <div class="col-sm-6">
-                                    <input type="text" class="form-control form-control-user" id="address"
-                                        placeholder="Teléfono">
-                                </div>
-
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control form-control-user" id="direccion"
-                                    placeholder="Dirección">
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <input type="text" class="form-control form-control-user" id="ciudad"
-                                        placeholder="Ciudad">
+                                    <input type="text" class="form-control form-control-user" name="lastname"
+                                        placeholder="Apellidos">
                                 </div>
-                                <div class="col-sm-6">
-                                    <input type="text" class="form-control form-control-user" id="responsable"
-                                        placeholder="Responsable">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <input type="text" class="form-control form-control-user" name="telephone"
+                                        placeholder="Teléfono">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <input type="text" class="form-control form-control-user" name="cellphone"
+                                        placeholder="Celular">
+                                </div>
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <input type="text" class="form-control form-control-user" name="address"
+                                        placeholder="Dirección">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <input type="password" class="form-control form-control-user" name="password"
+                                        placeholder="Contraseña">
                                 </div>
                             </div>
                             <hr>
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <a href="/office" class="btn btn-primary btn-user btn-block">
+                                    <button class="btn btn-primary btn-user btn-block">
                                         Guardar
-                                    </a>
-                                </div>
+                                    </button>
+                                </div>    
                                 <div class="col-lg-6">
-                                    <a href="/office" class="btn btn-danger btn-user btn-block">
+                                    <a href="/employees" class="btn btn-danger btn-user btn-block">
                                         Cancelar
                                     </a>
-
                                 </div>
-
                                 <hr>
-
                         </form>
-
                     </div>
                 </div>
             </div>
