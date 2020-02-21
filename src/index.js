@@ -10,6 +10,7 @@ const validator = require('express-validator');
 const bodyParser = require('body-parser');
 
 
+
 const { database } = require('./keys');
 
 // Intializations
@@ -72,12 +73,12 @@ app.use(require('./routes/users'));
 app.use(require('./routes/office'));
 app.use(require('./routes/employees'));
 app.use(require('./routes/home'));
-app.use(require('./routes/bussiness'));
+//app.use(require('./routes/bussiness'));
 app.use('/links', require('./routes/links'));
 app.use('/employees', require('./routes/employees'));
 app.use('/office', require('./routes/office'));
-//app.use('/links', require('./routes/links'));
-//app.use('/clientes', require('./routes/clientes'));
+app.use('/bussiness', require('./routes/bussiness'));
+
 
 //Public
 app.use(express.static(path.join(__dirname, 'public')));
