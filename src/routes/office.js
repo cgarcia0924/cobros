@@ -30,6 +30,35 @@ router.get('/office/add', isLoggedIn, async(req, res) => {
     //res.render('office/add');
 });
 
+router.post('/office/add', async(req, res, done) => {
+    const { number_cel, names, address, city_id, responsable, active = 'S' } = req.body;
+    const newOffice = {
+        number_cel,
+        names,
+        address,
+        city_id,
+        responsable,
+        customers_id: req.user.customers_id,
+        active
+    };
+    console.log(newOffice);
+
+    // validar si el usuario existe con nùmero de cedula
+    const rows = await pool.query('SELECT * FROM office WHERE names = ?', [names]);
+
+    if (rows.length > 0) {
+        done(null, false, req.flash('message', 'Existe una oficina creada con el mismo nombre'));
+        res.redirect('/office/add');
+    } else {
+        //newEmployes.password = await helpers.encryptPassword(password);
+        const result = await pool.query('INSERT INTO office SET ? ', newOffice);
+        console.log('Entrepor acá');
+        newOffice.id = result.insertId;
+        req.flash('success', 'Oficina creada exitosamente');
+        res.redirect('/office/add');
+    }
+});
+
 router.get('/office/edit', isLoggedIn, async(req, res) => {
     // const office = await pool.query('SELECT * FROM office');
     //const office = await pool.query('SELECT * FROM links WHERE user_id = ?', [req.user.id]);
