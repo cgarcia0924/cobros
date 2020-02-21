@@ -18,7 +18,7 @@ router.get('/add', isLoggedIn, async(req, res) => {
 });
 
 router.post('/employees/add', async(req, res, done) => {
-    const { number_id, username = number_id, name, lastname, telephone, cellphone, address, password, tipo_id = '1', tipou_id = '3' } = req.body;
+    const { number_id, username, name, lastname, telephone, cellphone, address, password, tipo_id = '1', tipou_id = '3' } = req.body;
     const newEmployes = {
         number_id,
         name,

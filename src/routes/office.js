@@ -4,7 +4,7 @@ const router = express.Router();
 const pool = require('../database');
 
 const { isLoggedIn } = require('../lib/auth');
-
+//lista
 router.get('/office', isLoggedIn, async(req, res) => {
     const office = await pool.query('SELECT * FROM office t1 INNER JOIN municipios t2 ON t1.city_id = t2.id;');
     //console.log(office);
@@ -13,7 +13,7 @@ router.get('/office', isLoggedIn, async(req, res) => {
     //res.render('office/add', { office });
 
 });
-
+//eliminar
 router.get('/office/delete/:id', async(req, res) => {
     const { id } = req.params;
     //console.log(req.params.id);
@@ -29,7 +29,6 @@ router.get('/office/add', isLoggedIn, async(req, res) => {
     res.render('office/add', { office });
     //res.render('office/add');
 });
-
 router.post('/office/add', async(req, res, done) => {
     const { number_cel, names, address, city_id, responsable, active = 'S' } = req.body;
     const newOffice = {
@@ -38,7 +37,7 @@ router.post('/office/add', async(req, res, done) => {
         address,
         city_id,
         responsable,
-        customers_id: req.user.customers_id,
+        customer_id: req.user.customers_id,
         active
     };
     console.log(newOffice);
@@ -55,10 +54,10 @@ router.post('/office/add', async(req, res, done) => {
         console.log('Entrepor acá');
         newOffice.id = result.insertId;
         req.flash('success', 'Oficina creada exitosamente');
-        res.redirect('/office/add');
+        res.redirect('/office');
     }
 });
-
+//editar
 router.get('/office/edit', isLoggedIn, async(req, res) => {
     // const office = await pool.query('SELECT * FROM office');
     //const office = await pool.query('SELECT * FROM links WHERE user_id = ?', [req.user.id]);
