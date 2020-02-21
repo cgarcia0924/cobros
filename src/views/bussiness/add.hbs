@@ -1,5 +1,5 @@
 <div class="container">
-
+      {{>message}}
     <div class="card o-hidden border-0 shadow-lg my-5">
         <div class="card-body p-0">
             <!-- Nested Row within Card Body -->
@@ -9,39 +9,41 @@
                         <div class="text-center">
                             <h1 class="h4 text-gray-900 mb-4">Crear Negocio!</h1>
                         </div>
-                        <form class="user" action="/bussiness/add" method="POST">
+                        <form class="user" action="bussiness/add" method="POST">
                             <div class="form-group row">
-                                <input type="text" class="form-control form-control-user" id="names"
-                                    placeholder="Nombre">
+                                <input type="text" class="form-control form-control-user" name="names"
+                                    placeholder="Nombre" required>
                             </div>
                             <div class="form-group row">
-                               
-                                    <label for="exampleFormControlSelect1">Usuario</label>
-                                    <select class="form-control" id="users">
-                                     {{#each users}}
-                                        <option>{{users.name}} {{users.lastname}}</option>
-                                     {{/each}}
-                                    </select>
-                              
-                            </div>
-                            <div class="form-group row">
-                                    <label for="exampleFormControlSelect1">Oficina</label>
-                                    <select class="form-control" id="office">
-                                    {{#each office}}
-                                        <option>{{office.id}} {{office.name}}</option>
+
+                                <label for="exampleFormControlSelect1">Usuario</label>
+
+                                <select class="form-control" name="users_id">
+                                    {{#each users}}
+                                    <option value="{{id}}">{{name}} {{lastname}}</option>
                                     {{/each}}
-                                    </select>
+                                </select>
+
                             </div>
-                            
+                            <div class="form-group row">
+                                <label for="exampleFormControlSelect1">Oficina</label>
+
+                                <select class="form-control" name="office_id">
+                                    {{#each office}}
+                                    <option value="{{id}}">{{names}}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
+
                             <hr>
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <a href="/office" class="btn btn-primary btn-user btn-block">
+                                    <button class="btn btn-primary btn-user btn-block">
                                         Guardar
-                                    </a>
+                                    </button>                                    
                                 </div>
                                 <div class="col-lg-6">
-                                    <a href="/office" class="btn btn-danger btn-user btn-block">
+                                    <a href="/bussiness" class="btn btn-danger btn-user btn-block">
                                         Cancelar
                                     </a>
                                 </div>

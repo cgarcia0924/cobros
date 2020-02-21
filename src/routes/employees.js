@@ -9,6 +9,7 @@ const { isLoggedIn } = require('../lib/auth');
 
 router.get('/', isLoggedIn, async(req, res) => {
     const users = await pool.query('SELECT * FROM users WHERE tipou_id = 3');
+    console.log(users);
     res.render('employees/list', { users });
 });
 
@@ -77,14 +78,7 @@ router.post('/edit/:id', async(req, res) => {
     req.flash('success', 'Usuario Actualizado Correctamente');
     res.redirect('/employees');
 });
-/*
-router.get('/delete/:id', async(req, res) => {
-    const { id } = req.params;
-    await pool.query('DELETE FROM users WHERE ID = ?', [id]);
-    req.flash('success', 'Link Removed Successfully');
-    res.redirect('employees');
-});
-*/
+
 passport.serializeUser((user, done) => {
     done(null, user.id);
 });

@@ -1,5 +1,5 @@
 <div class="container">
-
+    {{>message}}
     <div class="card o-hidden border-0 shadow-lg my-5">
         <div class="card-body p-0">
             <!-- Nested Row within Card Body -->
@@ -7,74 +7,46 @@
                 <div class="col-lg-12">
                     <div class="p-5">
                         <div class="text-center">
-                            <h1 class="h4 text-gray-900 mb-4">Editar Empleado!</h1>
+                            <h1 class="h4 text-gray-900 mb-4">Crear Negocio!</h1>
                         </div>
-                        <form class="user">
+                        <form class="user" action="bussiness/add" method="POST">
                             <div class="form-group row">
-                                <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <input type="text" class="form-control form-control-user" id="document"
-                                        placeholder="Nombre">
-                                </div>
-                                <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <div class="dropdown">
-                                        <button class="btn btn-secondary dropdown-toggle" type="button"
-                                            id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                                            aria-expanded="false">
-                                            Dropdown button
-                                        </button>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <input type="text" class="form-control form-control-user" id="phone"
-                                        placeholder="Usuario">
-                                </div>
-                                <div class="col-sm-6">
-                                    <input type="text" class="form-control form-control-user" id="cellphone"
-                                        placeholder="Célular">
-                                </div>
-                                <div class="col-sm-6">
-                                    <input type="text" class="form-control form-control-user" id="address"
-                                        placeholder="Teléfono">
-                                </div>
+                                <input type="text" class="form-control form-control-user" name="bnames"
+                                    placeholder="Nombre Negocio" required>
+                            </div>
+                            <div class="form-group row">
+                                <label for="exampleFormControlSelect1">Usuario</label>
+                                <select class="form-control" name="users_id">
+                                    {{#each users}}
+                                    <option value="{{id}}">{{name}} {{lastname}}</option>
+                                    {{/each}}
+                                </select>
 
                             </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control form-control-user" id="direccion"
-                                    placeholder="Dirección">
-                            </div>
                             <div class="form-group row">
-                                <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <input type="text" class="form-control form-control-user" id="ciudad"
-                                        placeholder="Ciudad">
-                                </div>
-                                <div class="col-sm-6">
-                                    <input type="text" class="form-control form-control-user" id="responsable"
-                                        placeholder="Responsable">
-                                </div>
+                                <label for="exampleFormControlSelect1">Oficina</label>
+
+                                <select class="form-control" name="office_id">
+                                    {{#each office}}
+                                    <option value="{{id}}">{{names}}</option>
+                                    {{/each}}
+                                </select>
                             </div>
+
                             <hr>
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <a href="/office" class="btn btn-primary btn-user btn-block">
+                                    <button class="btn btn-primary btn-user btn-block">
                                         Guardar
-                                    </a>
+                                    </button>
                                 </div>
                                 <div class="col-lg-6">
-                                    <a href="/office" class="btn btn-danger btn-user btn-block">
+                                    <a href="/bussiness" class="btn btn-danger btn-user btn-block">
                                         Cancelar
                                     </a>
-
                                 </div>
-
                                 <hr>
-
                         </form>
-
                     </div>
                 </div>
             </div>
