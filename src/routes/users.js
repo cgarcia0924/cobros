@@ -28,7 +28,7 @@ router.get('/add', isLoggedIn, async(req, res) => {
 
 router.post('/users/add', async(req, res, done) => {
     const { number_id, username, name, lastname, telephone, cellphone, address, password, tipo_id = '1', tipou_id } = req.body;
-    const newEmployes = {
+    const newUsers = {
         number_id,
         name,
         username,
@@ -48,9 +48,9 @@ router.post('/users/add', async(req, res, done) => {
         done(null, false, req.flash('message', 'El número de cédula ingresada ya existe'));
         res.redirect('/users/add');
     } else {
-        newEmployes.password = await helpers.encryptPassword(password);
-        const result = await pool.query('INSERT INTO users SET ? ', newEmployes);
-        newEmployes.id = result.insertId;
+        newUsers.password = await helpers.encryptPassword(password);
+        const result = await pool.query('INSERT INTO users SET ? ', newUsers);
+        newUsers.id = result.insertId;
         req.flash('success', 'Empleado creado exitosamente');
         res.redirect('/users');
     }
@@ -59,7 +59,10 @@ router.post('/users/add', async(req, res, done) => {
 router.get('/edit/:id', async(req, res) => {
     const { id } = req.params;
     const users = await pool.query('SELECT * FROM users WHERE ID = ?', [id]);
-    res.render('employees/edit', { user: users[0] });
+    const tusers = await pool.query('SELECT t.id as id, t.name as name FROM tipo_users AS t INNER JOIN users AS u ON u.tipou_id  = t.id where  u.id =?', [id]);
+    const tipo_users = await pool.query('SELECT * FROM tipo_users');
+    console.log(tusers);
+    res.render('users/edit', { user: users[0], tipo_users, tusers: tusers[0] });
 });
 
 router.post('/edit/:id', async(req, res) => {
@@ -79,7 +82,7 @@ router.post('/edit/:id', async(req, res) => {
     console.log(newuser);
     await pool.query('UPDATE users SET ? WHERE id = ?', [newuser, id]);
     req.flash('success', 'Usuario Actualizado Correctamente');
-    res.redirect('/employees');
+    res.redirect('/users');
 });
 
 passport.serializeUser((user, done) => {
