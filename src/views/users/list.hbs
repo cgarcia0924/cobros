@@ -3,7 +3,7 @@
     <h6 class="m-0 font-weight-bold text-primary">Usuarios Registrados</h6>
   </div>
   <div class="pt-3 pl-3">
-    <a href="office/add" class="btn btn-success .btn-circle btn-sm mr-auto">
+    <a href="users/add" class="btn btn-success .btn-circle btn-sm mr-auto">
       <span class="icon text-white-50">
         <i class="fas fa-check"></i>
       </span>
@@ -21,19 +21,21 @@
             <th>Apellidos</th>
             <th>usuario</th>
             <th>Tipo Usuario</th>
-            <th>Oficina</th>
+     
             <th>Acciones</th>
           </tr>
         </thead>
-        <!--tfoot>
-                    <tr>
-                      <th>id</th>
-                      <th>Nombres y Apellidos</th>
-                      <th>usuario</th>
-                      <th>Tipo Usuario</th>
-                      <th>Acciones</th>
-                    </tr>
-                  </tfoot-->
+        <tfoot>
+          <tr>
+            <th>id</th>
+            <th>Nombres</th>
+            <th>Apellidos</th>
+            <th>usuario</th>
+            <th>Tipo Usuario</th>
+
+            <th>Acciones</th>
+          </tr>
+        </tfoot>
         <tbody>
           {{#each usuarios}}
           <tr>
@@ -41,23 +43,18 @@
             <td>{{name}}</td>
             <td>{{lastname}}</td>
             <td>{{username}}</td>
-            <td>{{tipou_id}}</td>
-            <td>{{tipo_of}}</td>
-            <td>
-
-              <a href="#" class="btn btn-warning btn-icon-split btn-sm">
-                <span class="icon text-white-50">
-                  <i class="fas fa-check"></i>
-                </span>
-                <span class="text"></span>
-              </a>
-              <a href="#" class="btn btn-danger btn-icon-split btn-sm">
-                <span class="icon text-white-50">
-                  <i class="fas fa-trash"></i>
-                </span>
-                <span class="text"></span>
-              </a>
-
+            <td>{{tipo_users}}</td>
+              <td>
+                <a class="btn btn-warning btn-sm" href="/users/edit/{{id}}">
+                  <span class="icon text-white-50" ><i class="fas fa-check"></i></span>
+                  <span class="text" class="d-inline-block" tabindex="0" data-placement="top" title="Editar"> </span>
+                </a>
+                <a class="btn btn-danger btn-sm" href="/users/delete/{{id}}">
+                  <span class="icon text-white-50 d-inline-block" tabindex="0" data-placement="top" title="Eliminar"><i
+                      class="fas fa-trash" data-toggle="tooltip"> </i> </span>
+                  <span class="text"> </span>
+                </a>
+              </td>
             </td>
           </tr>
           {{/each}}

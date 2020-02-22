@@ -1,20 +1,20 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
   <!-- Page Heading -->
-  <h1 class="h3 mb-2 text-gray-800">Administrar Empleados</h1>
-  <div class="pt-3 pl-3">
+
+  <p class="mb-4"></p> <!-- Margen Inicial  -->
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">Administrar Empleados</h6>
+    </div>
+      <div class="pt-3 pl-3">
     <a href="employees/add" class="btn btn-success .btn-circle btn-sm mr-auto">
       <span class="icon text-white-50">
         <i class="fas fa-check"></i>
       </span>
       <span class="text">Adicionar</span>
     </a>
-  </div>  
-  <p class="mb-4"></p> <!-- Margen Inicial  -->
-  <div class="card shadow mb-4">
-    <div class="card-header py-3">
-      <h6 class="m-0 font-weight-bold text-primary">Empleados Registrados</h6>
-    </div>
+  </div>
     <div class="card-body">
       <div class="table-responsive">
         <table id="example" class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -53,8 +53,8 @@
               <td>{{cellphone}}</td>
               <td>
                 <a class="btn btn-warning btn-sm" href="/employees/edit/{{id}}">
-                  <span class="icon text-white-50" ><i class="fas fa-check"></i></span>
-                  <span class="text" class="d-inline-block" tabindex="0" data-placement="top" title="Editar">  </span>
+                  <span class="icon text-white-50"><i class="fas fa-check"></i></span>
+                  <span class="text" class="d-inline-block" tabindex="0" data-placement="top" title="Editar"> </span>
                 </a>
                 <a class="btn btn-danger btn-sm" href="/employees/delete/{{id}}">
                   <span class="icon text-white-50 d-inline-block" tabindex="0" data-placement="top" title="Eliminar"><i

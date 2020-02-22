@@ -2,18 +2,20 @@
 
 const express = require('express');
 const router = express.Router();
+const pool = require('../database');
 
 const passport = require('passport');
 // Con isLoggedIn PROTEJO LAS RUTAS
 const { isLoggedIn, isNotLoggedIn } = require('../lib/auth');
 
 // SIGNUP
-router.get('/signup', isLoggedIn, (req, res) => {
-    res.render('auth/signup');
+router.get('/signup', isLoggedIn, async(req, res) => {
+    const tipo_users = await pool.query('SELECT * FROM tipo_users');
+    res.render('auth/signup', { tipo_users });
 });
 
 router.post('/signup', passport.authenticate('local.signup', {
-    successRedirect: '/profile',
+    successRedirect: '/users',
     failureRedirect: '/signup',
     failureFlash: true
 }));

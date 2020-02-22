@@ -26,7 +26,7 @@ router.get('/delete/:id', async(req, res) => {
 
 router.post('/bussiness/add', async(req, res, done) => {
     console.log(req.body)
-    const { names, users_id, office_id, active = '1' } = req.body;
+    const { names, users_id, office_id, active = 'S' } = req.body;
     const newBussiness = {
         names,
         office_id: office_id,
@@ -44,34 +44,27 @@ router.post('/bussiness/add', async(req, res, done) => {
 
 router.get('/edit/:id', async(req, res) => {
     const { id } = req.params;
-    const users = await pool.query('SELECT b.user_id AS user_id, u.name AS name, u.lastname AS lastname FROM bussiness AS b INNER JOIN users AS u ON u.id = b.user_id INNER JOIN office as o ON o.id = b.office_id WHERE b.id = ?', [id]);
-    const office = await pool.query('SELECT b.id, b.names AS bnames, o.names AS names, b.office_id AS id  FROM bussiness AS b INNER JOIN users AS u ON u.id = b.user_id INNER JOIN office as o ON o.id = b.office_id WHERE b.id = ?', [id]);
-    //console.log(office);
-    console.log(users);
-    res.render('bussiness/edit', { users: users[0], office: office[0] });
+    const bussiness = await pool.query('SELECT b.user_id AS user_id, u.name AS user_name, u.lastname AS user_lastname, b.office_id AS office_id, o.names AS office_names ,b.names AS bussinames, b.id AS bussiid FROM bussiness AS b INNER JOIN users AS u ON u.id = b.user_id INNER JOIN office as o ON o.id = b.office_id WHERE b.id =?', [id]);
+    const office = await pool.query('SELECT * FROM office');
+    const users = await pool.query('SELECT * FROM users');
+    console.log(bussiness);
+    res.render('bussiness/edit', { bussiness: bussiness[0], office, users });
 });
 
 router.post('/edit/:id', async(req, res) => {
     const { id } = req.params;
-    const { number_id, username, name, lastname, telephone, cellphone, address, tipo_id = '1', tipou_id = '3' } = req.body;
-    const newuser = {
-        number_id,
-        name,
-        username,
-        lastname,
-        telephone,
-        cellphone,
-        address,
-        tipo_id,
-        tipou_id
+    const { names, users_id, office_id, active = 'S' } = req.body;
+    const newBussiness = {
+        names,
+        office_id: office_id,
+        user_id: users_id,
+        customers_id: req.user.customers_id,
+        active,
     };
-    console.log(newuser);
-    await pool.query('UPDATE users SET ? WHERE id = ?', [newuser, id]);
-    req.flash('success', 'Usuario Actualizado Correctamente');
-    res.redirect('/employees');
+    console.log(newBussiness);
+    await pool.query('UPDATE bussiness SET ? WHERE id = ?', [newBussiness, id]);
+    req.flash('success', 'Cobro actualizado correctamente');
+    res.redirect('/bussiness');
 });
-
-
-
 
 module.exports = router;

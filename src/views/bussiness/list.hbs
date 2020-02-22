@@ -2,19 +2,18 @@
 <div class="container-fluid">
 
   <!-- Page Heading -->
-  <h1 class="h3 mb-2 text-gray-800">Administrar Cobros</h1>
-  <div class="pt-3 pl-3">
-    <a href="/bussiness/add" class="btn btn-success .btn-circle btn-sm mr-auto">
-      <span class="icon text-white-50">
-        <i class="fas fa-check"></i>
-      </span>
-      <span class="text">Adicionar</span>
-    </a>
-  </div>
   <p class="mb-4"></p> <!-- Margen Inicial  -->
   <div class="card shadow mb-4">
     <div class="card-header py-3">
-      <h6 class="m-0 font-weight-bold text-primary">Adiministrar Negocios</h6>
+      <h6 class="m-0 font-weight-bold text-primary">Adiministrar Cobros</h6>
+    </div>
+    <div class="pt-3 pl-3">
+      <a href="/bussiness/add" class="btn btn-success .btn-circle btn-sm mr-auto">
+        <span class="icon text-white-50">
+          <i class="fas fa-check"></i>
+        </span>
+        <span class="text">Adicionar</span>
+      </a>
     </div>
     <div class="card-body">
       <div class="table-responsive">
@@ -36,10 +35,10 @@
               <td>{{bnames}}</td>
               <td>{{office}}</td>
               <td>{{timeago date}}</td>
-              <td>{{name}} {{lastname}}</td>              
+              <td>{{name}} {{lastname}}</td>
               <td>
                 <a class="btn btn-warning btn-sm" href="/bussiness/edit/{{id}}">
-                  <span class="icon text-white-50" ><i class="fas fa-check"></i></span>
+                  <span class="icon text-white-50"><i class="fas fa-check"></i></span>
                   <span class="text" class="d-inline-block" tabindex="0" data-placement="top" title="Editar"> </span>
                 </a>
                 <a class="btn btn-danger btn-sm" href="/bussiness/delete/{{id}}">
