@@ -74,11 +74,12 @@ app.use('/users', require('./routes/users'));
 app.use(require('./routes/office'));
 app.use(require('./routes/employees'));
 app.use(require('./routes/home'));
-//app.use(require('./routes/bussiness'));
+
 app.use('/links', require('./routes/links'));
 app.use('/employees', require('./routes/employees'));
 app.use('/office', require('./routes/office'));
 app.use('/bussiness', require('./routes/bussiness'));
+app.use('/constants', require('./routes/constants'));
 
 
 //Public
