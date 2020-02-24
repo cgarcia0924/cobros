@@ -21,10 +21,11 @@
           <thead>
             <tr>
               <th>Id</th>
-              <th>Nombre Negocio</th>
+              <th>Nombre</th>
+              <th>Utilidad</th>
+              <th>Plazo</th>
+              <th>Días Clavo</th>
               <th>Oficina</th>
-              <th>Fecha Ingreso</th>
-              <th>Usuario</th>
               <th>Acciones</th>
             </tr>
           </thead>
@@ -32,10 +33,11 @@
             {{#each constants}}
             <tr>
               <td>{{id}}</td>
-              <td>{{bnames}}</td>
-              <td>{{office}}</td>
-              <td>{{timeago date}}</td>
-              <td>{{name}} {{lastname}}</td>
+              <td>{{name}}</td>
+              <td>{{utility}}</td>
+              <td>{{term}}</td>
+              <td>{{nailday}}</td>
+              <td>{{names}}</td>
               <td>
                 <a class="btn btn-warning btn-sm" href="/constants/edit/{{id}}">
                   <span class="icon text-white-50"><i class="fas fa-check"></i></span>
@@ -58,6 +60,7 @@
               <th>Oficina</th>
               <th>Fecha Ingreso</th>
               <th>Usuario</th>
+              <th>Acciones</th>
               <th>Acciones</th>
             </tr>
           </tfoot>
