@@ -1,0 +1,58 @@
+<div class="container">
+    {{>message}}
+    <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card-body p-0">
+            <!-- Nested Row within Card Body -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="p-5">
+                        <div class="text-center">
+                            <h1 class="h4 text-gray-900 mb-4">Crear Tipo Gasto</h1>
+                        </div>
+                        <form class="user" action="expense/add" method="POST">
+                            <div class="form-group row">
+                                <div class="form-group col-sm-6 mb-3 mb-sm-0">
+                                    <label class="label label-default">Nombre:</label>
+                                    <input type="text" class="form-control " name="description" placeholder="" required>
+                                </div>                            
+                                <div class="form-group col-sm-6 mb-3 mb-sm-0">
+                                    <label for="exampleFormControlSelect1">Tipo Gasto:</label>
+                                    <select class="form-control" name="idtipogasto">
+                                        <option value=""></option>
+                                        {{#each tipo_gasto}}
+                                        <option value="{{id}}">{{description}}</option>
+                                        {{/each}}
+                                    </select>
+                                </div>
+                                <div class="form-group col-sm-6 mb-3 mb-sm-0">
+                                    <label for="exampleFormControlSelect1">Tipo Operacion:</label>
+                                    <select class="form-control" name="idoperacion">
+                                        <option value=""></option>
+                                        {{#each tipo_operacion}}
+                                        <option value="{{id}}">{{description}}</option>
+                                        {{/each}}
+                                    </select>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <button class="btn btn-primary btn-user btn-block">
+                                        Guardar
+                                    </button>
+                                </div>
+                                <div class="col-lg-6">
+                                    <a href="/constants" class="btn btn-danger btn-user btn-block">
+                                        Cancelar
+                                    </a>
+                                </div>
+                                <hr>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

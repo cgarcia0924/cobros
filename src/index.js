@@ -80,7 +80,7 @@ app.use('/employees', require('./routes/employees'));
 app.use('/office', require('./routes/office'));
 app.use('/bussiness', require('./routes/bussiness'));
 app.use('/constants', require('./routes/constants'));
-
+app.use('/expense', require('./routes/expense'));
 
 //Public
 app.use(express.static(path.join(__dirname, 'public')));
