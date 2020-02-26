@@ -436,6 +436,21 @@
         });
 
     </script>
+
+    <script type="text/javascript">
+        function ConfirmEstado(id_list) {
+            //Ingresamos un mensaje a mostrar
+            var mensaje = confirm("¿Desea cambiar el estado para el gasto seleccionado?");
+            //Detectamos si el usuario acepto el mensaje
+            if (mensaje) {
+                // alert("¡Gracias por aceptar!" + id_list + " ");
+                window.location = "/expense/estado/" + id_list;
+            }
+            else {
+                return;
+            }
+        }
+    </script>
     <!-- Page level plugins -->
     <script src="../../vendor/chart.js/Chart.min.js"></script>
 
