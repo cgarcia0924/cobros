@@ -7,7 +7,8 @@ const pool = require('../database');
 const { isLoggedIn } = require('../lib/auth');
 
 router.get('/', isLoggedIn, async(req, res) => {
-    const bussiness = await pool.query('SELECT b.id AS id, b.names AS bnames, o.names AS office, u.name AS name, u.lastname AS lastname, b.date_admission AS date, b.active AS active FROM bussiness AS b INNER JOIN users AS u ON u.id = b.user_id INNER JOIN office as o ON o.id = b.office_id');
+    const customers = req.user.customers_id;
+    const bussiness = await pool.query('SELECT b.id AS id, b.names AS bnames, b.customers_id as customers_id, o.names AS office, u.name AS name, u.lastname AS lastname, b.date_admission AS date, b.active AS active FROM bussiness AS b INNER JOIN users AS u ON u.id = b.user_id INNER JOIN office as o ON o.id = b.office_id WHERE b.customers_id = ?', [customers]);
     res.render('bussiness/list', { bussiness });
 });
 

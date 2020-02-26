@@ -8,7 +8,8 @@ const helpers = require('../lib/helpers');
 const { isLoggedIn } = require('../lib/auth');
 
 router.get('/users', isLoggedIn, async(req, res) => {
-    const usuarios = await pool.query('SELECT u.id AS id, u.name AS name, u.username AS username, u.lastname AS lastname, t.name As tipo_users FROM users AS u INNER JOIN tipo_users AS t ON t.id = u.tipou_id');
+    const customers = req.user.customers_id;
+    const usuarios = await pool.query('SELECT u.id AS id, u.number_id AS number_id, u.name AS name, u.customers_id as customers_id, u.username AS username, u.lastname AS lastname, t.name As tipo_users FROM users AS u INNER JOIN tipo_users AS t ON t.id = u.tipou_id WHERE u.customers_id = ?', [customers]);
     res.render('users/list', { usuarios });
 });
 

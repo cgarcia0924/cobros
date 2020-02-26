@@ -8,7 +8,8 @@ const helpers = require('../lib/helpers');
 const { isLoggedIn } = require('../lib/auth');
 
 router.get('/', isLoggedIn, async(req, res) => {
-    const users = await pool.query('SELECT * FROM users WHERE tipou_id = 3');
+    const customers = req.user.customers_id;
+    const users = await pool.query('SELECT * FROM users WHERE tipou_id = 3 and customers_id=?', [customers]);
     console.log(users);
     res.render('employees/list', { users });
 });

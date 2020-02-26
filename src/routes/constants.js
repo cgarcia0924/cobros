@@ -7,7 +7,8 @@ const helpers = require('../lib/helpers');
 const { isLoggedIn } = require('../lib/auth');
 
 router.get('/', isLoggedIn, async(req, res) => {
-    const constants = await pool.query('SELECT c.id as id, c.name as name, c.utility as utility, c.term as term, c.nailday as nailday, o.id as office_id, o.names as names   FROM constants AS c INNER JOIN office AS o ON o.id = c.office_id');
+    const customers = req.user.customers_id;
+    const constants = await pool.query('SELECT c.id as id, c.customers_id as customers_id, c.name as name, c.utility as utility, c.term as term, c.nailday as nailday, o.id as office_id, o.names as names   FROM constants AS c INNER JOIN office AS o ON o.id = c.office_id WHERE c.customers_id = ?', [customers]);
     res.render('constants/list', { constants });
 });
 
