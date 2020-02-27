@@ -20,7 +20,8 @@ router.get('/delete/:id', async(req, res) => {
 });
 
 router.get('/add', isLoggedIn, async(req, res) => {
-    const office = await pool.query('SELECT * FROM office');
+    const id_cliente = req.user.customers_id;
+    const office = await pool.query('SELECT * FROM office  where customer_id = ?', [id_cliente]);
     res.render('constants/add', { office });
 });
 
