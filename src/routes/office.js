@@ -6,7 +6,8 @@ const pool = require('../database');
 const { isLoggedIn } = require('../lib/auth');
 //lista
 router.get('/office', isLoggedIn, async(req, res) => {
-    const office = await pool.query('SELECT b.id AS id, b.number_cel AS celular, b.names AS nombres, b.address AS direccion, b.city_id AS idcity, b.responsable AS responsable, b.customer_id AS idcliente, b.active AS active, a.id AS idmun, a.nombre AS nombremun FROM office AS b INNER JOIN municipios AS a ON b.id = a.id ORDER BY b.names ASC;');
+    const id_cliente = req.user.customers_id;
+    const office = await pool.query('SELECT b.id AS id, b.number_cel AS celular, b.names AS nombres, b.address AS direccion, b.city_id AS idcity, b.responsable AS responsable, b.customer_id AS idcliente, b.active AS active, a.id AS idmun, a.nombre AS nombremun FROM office AS b INNER JOIN municipios AS a ON b.id = a.id WHERE b.customer_id= ? ORDER BY b.names ASC;', [id_cliente]);
     //console.log(office);
     //const office = await pool.query('SELECT * FROM links WHERE user_id = ?', [req.user.id]);
     res.render('office/list', { office });

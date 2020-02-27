@@ -15,7 +15,7 @@
       <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
         <thead>
           <tr>
-            <th>id</th>
+            <th>Cédula</th>
             <th>Nombres</th>
             <th>Apellidos</th>
             <th>usuario</th>
@@ -25,7 +25,7 @@
         </thead>
         <tfoot>
           <tr>
-            <th>id</th>
+            <th>Cédula</th>
             <th>Nombres</th>
             <th>Apellidos</th>
             <th>usuario</th>
@@ -37,7 +37,7 @@
         <tbody>
           {{#each usuarios}}
           <tr>
-            <td>{{id}}</td>
+            <td>{{number_id}}</td>
             <td>{{name}}</td>
             <td>{{lastname}}</td>
             <td>{{username}}</td>
@@ -47,7 +47,7 @@
                   <span class="icon text-white-50" ><i class="fas fa-check"></i></span>
                   <span class="text" class="d-inline-block" tabindex="0" data-placement="top" title="Editar"> </span>
                 </a>
-                <a class="btn btn-danger btn-sm" href="/users/delete/{{id}}">
+                <a class="btn btn-danger btn-sm" href="javascript:EliminarUsuarios({{id}})" >
                   <span class="icon text-white-50 d-inline-block" tabindex="0" data-placement="top" title="Eliminar"><i
                       class="fas fa-trash" data-toggle="tooltip"> </i> </span>
                   <span class="text"> </span>

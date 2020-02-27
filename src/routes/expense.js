@@ -18,19 +18,15 @@ router.get('/estado/:id', async(req, res) => {
     const { id } = req.params;
     const gasto = await pool.query('SELECT estado FROM motivogasto WHERE ID = ?', [id]);
     var estado = gasto[0].estado
-
     if (estado == 'Activo') {
         var newestado = "Inactivo";
     } else {
         var newestado = "Activo";
     }
-
     console.log(newestado, id);
-
     await pool.query('UPDATE motivogasto SET estado = ? WHERE id =?', [newestado, id]);
     req.flash('success', 'Estado actualizado correctamente');
     res.redirect('/expense');
-
 });
 
 router.get('/add', isLoggedIn, async(req, res) => {
