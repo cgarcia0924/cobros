@@ -19,10 +19,19 @@ router.get('/delete/:id', async(req, res) => {
     res.redirect('/users');
 });
 
+router.get('/filtrocobro/:id', async(req, res) => {
+    const { id } = req.params;
+    const filtrocobroof = await pool.query('SELECT * FROM bussiness WHERE ID = ?', [id]);
+    //req.flash('success', 'Usuario eliminado exitosamente');
+    console.log(filtrocobroof);
+   // res.redirect('/users');
+});
+
 router.get('/add', isLoggedIn, async(req, res) => {
     const tipo_users = await pool.query('SELECT * from tipo_users');
+    const office = await pool.query('select * from office join ( select distinct office_id, names from bussiness ) as a on office.id = a.office_id');
     console.log(tipo_users)
-    res.render('users/add', { tipo_users });
+    res.render('users/add', { tipo_users, office });
 });
 
 
@@ -55,6 +64,8 @@ router.post('/users/add', async(req, res, done) => {
         res.redirect('/users');
     }
 });
+
+
 
 router.get('/edit/:id', async(req, res) => {
     const { id } = req.params;

@@ -13,61 +13,91 @@
                             <div class="form-group row">
                                 <div class="form-group col-sm-6 mb-3 mb-sm-0">
                                     <label class="label label-default">Cédula:</label>
-                                    <input type="text" class="form-control " name="number_id"
-                                        placeholder="" required>
+                                    <input type="text" class="form-control " name="number_id" placeholder="" required>
                                 </div>
                                 <div class="form-group col-sm-6 mb-3 mb-sm-0">
                                     <label class="label label-default">Nombres:</label>
-                                    <input type="text" class="form-control " name="name" placeholder=""
-                                        required>
+                                    <input type="text" class="form-control " name="name" placeholder="" required>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-6 mb-3 mb-sm-0">
                                     <label class="label label-default">Apellidos:</label>
-                                    <input type="text" class="form-control " name="lastname"
-                                        placeholder="" required>
+                                    <input type="text" class="form-control " name="lastname" placeholder="" required>
                                 </div>
                                 <div class="col-sm-6 mb-3 mb-sm-0">
                                     <label class="label label-default">Teléfono:</label>
-                                    <input type="text" class="form-control " name="telephone"
-                                        placeholder="" required>
+                                    <input type="text" class="form-control " name="telephone" placeholder="" required>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-6 mb-3 mb-sm-0">
                                     <label class="label label-default">Celular:</label>
-                                    <input type="text" class="form-control " name="cellphone"
-                                        placeholder="" required>
+                                    <input type="text" class="form-control " name="cellphone" placeholder="" required>
                                 </div>
                                 <div class="col-sm-6 mb-3 mb-sm-0">
                                     <label class="label label-default">Dirección:</label>
-                                    <input type="text" class="form-control " name="address"
-                                        placeholder="" required>
+                                    <input type="text" class="form-control " name="address" placeholder="" required>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-6 mb-3 mb-sm-0">
-                                <label for="exampleFormControlSelect1">Tipo usuario:</label>
-                                <select class="form-control" name="tipou_id">
-                                    <option value=""></option>
-                                    {{#each tipo_users}}
-                                    <option value="{{id}}">{{name}}</option>
-                                    {{/each}}
-                                </select>
-                                </div>                                
+                                    <label for="exampleFormControlSelect1">Tipo usuario:</label>
+                                    <select class="form-control" name="tipou_id">
+                                        {{#each tipo_users}}
+                                        <option value="{{id}}">{{name}}</option>
+                                        {{/each}}
+                                    </select>
+                                </div>
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+
+                                </div>
                                 <div class="col-sm-6 mb-3 mb-sm-0">
                                     <label class="label label-default">Usuario:</label>
-                                    <input type="text" class="form-control " name="username"
-                                        placeholder="" required>
+                                    <input type="text" class="form-control " name="username" placeholder="" required>
                                 </div>
                                 <div class="col-sm-6 mb-3 mb-sm-0">
                                     <label class="label label-default">Password:</label>
-                                    <input type="password" class="form-control " name="password"
-                                        placeholder="" required>
+                                    <input type="password" class="form-control " name="password" placeholder=""
+                                        required>
                                 </div>
                             </div>
-                            <hr>
+                            <hr class="my-4">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">Relacionar oficina</h1>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <label for="exampleFormControlSelect1">Oficina:</label>
+                                    
+                                    <select class="form-control" id="producto" name="producto"
+                                        onchange="ShowSelected(this.value);">
+                                        <option value="NO">Seleccione una oficina</option>
+                                        {{#each office}}
+                                        
+                                        <option value="{{id}}">{{names}}</option>
+                                        {{/each}}
+                                    </select>
+                                </div>
+
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <div>
+                                        <label for="exampleFormControlSelect1">Cobro:</label>
+                                    </div>
+                                    <!--div id="select2lista">
+                                    </div-->
+                                    {{#each office}}
+                                    <div class="pl-3">
+                                        <input class="form-check-input" type="checkbox" value="{{id}}"
+                                            id="defaultCheck1">
+                                        <label class="form-check-label" for="defaultCheck1">
+                                            {{names}}
+                                        </label>
+                                    </div>
+                                    {{/each}}
+
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col-lg-6">
                                     <button class="btn btn-primary btn-user btn-block">
