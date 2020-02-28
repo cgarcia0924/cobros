@@ -507,7 +507,7 @@
             }
         }
     </script>
-    </script>
+
     <script type="text/javascript">
         function EliminarUsuarios(id_list) {
             var mensaje = confirm("¿Desea eliminar el usuario seleccionado?");
@@ -519,6 +519,19 @@
             }
         }
     </script>
+    <script type="text/javascript">
+        $('#testing').change(function () {
+            var porId=document.getElementById("testing").value;
+            alert(porId);
+            window.location = "/users/cobro/" + porId;
+            //const cobrolist = await pool.query('SELECT * from bussiness WHERE id = ?', [porId]);
+            //alert(cobrolist);
+            //const office1 = await pool.query('select * from office join ( select distinct office_id, names as nombres from bussiness ) as a on office.id = a.office_id');
+           // console.log(tipo_users);
+           // res.render('users/add', { office1 });
+        });
+    </script>
+
     <!-- Page level plugins -->
     <script src="../../vendor/chart.js/Chart.min.js"></script>
 

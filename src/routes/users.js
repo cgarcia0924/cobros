@@ -20,19 +20,18 @@ router.get('/delete/:id', async(req, res) => {
     res.redirect('/users');
 });
 
-router.get('/filtrocobro/:id', async(req, res) => {
-    const { id } = req.params;
-    const filtrocobroof = await pool.query('SELECT * FROM bussiness WHERE ID = ?', [id]);
-    //req.flash('success', 'Usuario eliminado exitosamente');
-    console.log(filtrocobroof);
-   // res.redirect('/users');
-});
 
 router.get('/add', isLoggedIn, async(req, res) => {
     const tipo_users = await pool.query('SELECT * from tipo_users');
-    const office = await pool.query('select * from office join ( select distinct office_id, names from bussiness ) as a on office.id = a.office_id');
+    const office = await pool.query('select * from office join ( select distinct office_id, names as nombres from bussiness ) as a on office.id = a.office_id');
+    
+    const id_cliente = req.user.customers_id;
+    const office1 = await pool.query('SELECT b.id AS id, b.number_cel AS celular, b.names AS nombres, b.address AS direccion, b.city_id AS idcity, b.responsable AS responsable, b.customer_id AS idcliente, b.active AS active, a.id AS idmun, a.nombre AS nombremun FROM office AS b INNER JOIN municipios AS a ON b.id = a.id WHERE b.customer_id= ? ORDER BY b.names ASC;', [id_cliente]);
+    //console.log(office);
+    //const office = await pool.query('SELECT * FROM links WHERE user_id = ?', [req.user.id]);
+    //res.render('office/list', { office });
     console.log(tipo_users)
-    res.render('users/add', { tipo_users, office });
+    res.render('users/add', { tipo_users, office, office1 });
 });
 
 
@@ -66,7 +65,13 @@ router.post('/users/add', async(req, res, done) => {
     }
 });
 
-
+router.get('/cobro/:id', async(req, res) => {
+    const { id } = req.params;
+    const cobro = await pool.query('SELECT * from bussiness WHERE office_id = 2',);
+    const office = await pool.query('select * from office join ( select distinct office_id, names as nombres from bussiness ) as a on office.id = a.office_id');
+    console.log(cobro);
+    res.render('users/add', { cobro, office });
+});
 
 router.get('/edit/:id', async(req, res) => {
     const { id } = req.params;
